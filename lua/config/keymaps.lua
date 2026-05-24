@@ -11,6 +11,7 @@ keymap("n", "<C-l>", "<C-w>l")
 keymap("n", "<leader>Y", '"+Y', { desc = "Yank line to clipboard" })
 keymap("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 keymap("n", "<leader>d", '"_d', { desc = "Delete to void register" })
+keymap("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", { desc = "Rename" })
 
 -- Insert
 keymap("i", "jk", "<C-c>")

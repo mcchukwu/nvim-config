@@ -17,8 +17,8 @@ local function setup(server_name, opts)
   )
 
   -- Start server if Neovim is already open in a project
-  if vim.lsp.get_active_clients({ name = server_name })[1] == nil then
-    vim.lsp.start_client(vim.lsp.config[server_name])
+  if vim.lsp.get_clients({ name = server_name })[1] == nil then
+    vim.lsp.start(vim.lsp.config[server_name])
   end
 end
 
