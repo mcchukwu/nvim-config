@@ -11,15 +11,17 @@ local function setup(server_name, opts)
   opts = vim.tbl_deep_extend("force", default_opts, opts or {})
 
   -- Add server to vim.lsp.config
-  vim.lsp.config[server_name] = vim.tbl_extend("force",
-    vim.lsp.config[server_name] or {},
-    opts
-  )
+  --  vim.lsp.config[server_name] = vim.tbl_extend("force",
+  --   vim.lsp.config[server_name] or {},
+  --  opts
+  --)
+  vim.lsp.config(server_name, opts)
 
   -- Start server if Neovim is already open in a project
-  if vim.lsp.get_clients({ name = server_name })[1] == nil then
-    vim.lsp.start(vim.lsp.config[server_name])
-  end
+  --if vim.lsp.get_clients({ name = server_name })[1] == nil then
+  -- vim.lsp.start(vim.lsp.config[server_name])
+  --end
+  vim.lsp.enable(server_name)
 end
 
 -- Lua
@@ -41,3 +43,6 @@ setup("pyright")
 
 -- Go
 setup("gopls")
+
+-- Svelte
+setup("svelte")
