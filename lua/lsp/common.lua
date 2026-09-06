@@ -26,7 +26,8 @@ function M.on_attach(client, bufnr)
   end
 
   -- Format on save (opt-in per server)
-  if client.server_capabilities.documentFormattingProvider then
+  -- Svelte is excluded: its formatter (Prettier via svelte-language-server)
+  if client.server_capabilities.documentFormattingProvider and client.name ~= "svelte" then
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
       callback = function()
